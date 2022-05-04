@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import moment from 'moment';
+import moment from 'moment'
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, TablePagination, Popover } from '@material-ui/core'
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown'
 import { BiExport } from 'react-icons/bi'
