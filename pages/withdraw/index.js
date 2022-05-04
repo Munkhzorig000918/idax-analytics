@@ -19,7 +19,7 @@ ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, PointE
 
 export default function Withdraw({ withdrawReq, totalWithdrawReq, withdrawRes, totalWithdrawRes, refundReq, totalRefundReq, refundRes, totalRefundRes, bankReq, totalBankReq, bankRes, totalBankRes }) {
 
-    let chartTitles = [...new Map(withdrawReq.map(item => [item['statusId'], item])).values()]
+    let chartTitles = [...new Map(withdrawReq ? withdrawReq.map(item => [item['statusId'], item]) : []).values()]
     let chartValues = chartTitles.map(t => withdrawReq.filter(w => w.statusId == t.statusId))
     
     const data = {
@@ -27,7 +27,7 @@ export default function Withdraw({ withdrawReq, totalWithdrawReq, withdrawRes, t
         datasets: [
           {
             label: '# of Votes',
-            data: [withdrawReq.filter(w => w.statusId === 1001).length, withdrawReq.filter(w => w.statusId === 1002).length, withdrawReq.filter(w => w.statusId === 1003).length, withdrawReq.filter(w => w.statusId === 1004).length, withdrawReq.filter(w => w.statusId === 1005).length],
+            data: [withdrawReq ? withdrawReq.filter(w => w.statusId === 1001).length : 0, withdrawReq ? withdrawReq.filter(w => w.statusId === 1002).length : 0, withdrawReq ? withdrawReq.filter(w => w.statusId === 1003).length : 0, withdrawReq ? withdrawReq.filter(w => w.statusId === 1004).length : 0, withdrawReq ? withdrawReq.filter(w => w.statusId === 1005).length : 0],
             backgroundColor: [
               'rgba(54, 162, 235, 0.2)',
               'rgba(255, 206, 86, 0.2)',
@@ -83,7 +83,7 @@ export default function Withdraw({ withdrawReq, totalWithdrawReq, withdrawRes, t
                     </div>
                 </Link>
                 <div className="flex items-center space-x-4 font-bold text-lg">
-                    <span className="uppercase cursor-default">idax analytics</span>
+                    <span className="uppercase cursor-default">idax withdraw analytics</span>
                 </div>
             </header>
 
@@ -99,27 +99,27 @@ export default function Withdraw({ withdrawReq, totalWithdrawReq, withdrawRes, t
                 <div className="px-8 pb-8 grid grid-cols-6 gap-4">
                     <div className="shadow p-4 space-y-2">
                         <p className="text-sm font-medium">Withdraw Req</p>
-                        <span className="font-block text-2xl flex justify-center">{new BigNumber(totalWithdrawReq).toFormat(0)}</span>
+                        <span className="font-block text-2xl flex justify-center">{totalWithdrawReq ? new BigNumber(totalWithdrawReq).toFormat(0) : '--'}</span>
                     </div>
                     <div className="shadow p-4 space-y-2">
                         <p className="text-sm font-medium">Withdraw Res</p>
-                        <span className="font-block text-2xl flex justify-center">{new BigNumber(totalWithdrawRes).toFormat(0)}</span>
+                        <span className="font-block text-2xl flex justify-center">{totalWithdrawRes ? new BigNumber(totalWithdrawRes).toFormat(0) : '--'}</span>
                     </div>
                     <div className="shadow p-4 space-y-2">
                         <p className="text-sm font-medium">Refund Req</p>
-                        <span className="font-block text-2xl flex justify-center">{new BigNumber(totalRefundReq).toFormat(0)}</span>
+                        <span className="font-block text-2xl flex justify-center">{totalRefundReq ? new BigNumber(totalRefundReq).toFormat(0) : '--'}</span>
                     </div>
                     <div className="shadow p-4 space-y-2">
                         <p className="text-sm font-medium">Refund Res</p>
-                        <span className="font-block text-2xl flex justify-center">{new BigNumber(totalRefundRes).toFormat(0)}</span>
+                        <span className="font-block text-2xl flex justify-center">{totalRefundRes ? new BigNumber(totalRefundRes).toFormat(0) : '--'}</span>
                     </div>
                     <div className="shadow p-4 space-y-2">
                         <p className="text-sm font-medium">Bank Req</p>
-                        <span className="font-block text-2xl flex justify-center">{new BigNumber(totalBankReq).toFormat(0)}</span>
+                        <span className="font-block text-2xl flex justify-center">{totalBankReq ? new BigNumber(totalBankReq).toFormat(0) : '--'}</span>
                     </div>
                     <div className="shadow p-4 space-y-2">
                         <p className="text-sm font-medium">Bank Res</p>
-                        <span className="font-block text-2xl flex justify-center">{new BigNumber(totalBankRes).toFormat(0)}</span>
+                        <span className="font-block text-2xl flex justify-center">{totalBankRes ? new BigNumber(totalBankRes).toFormat(0) : '--'}</span>
                     </div>
                 </div>
             </section>

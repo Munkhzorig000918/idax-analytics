@@ -26,15 +26,15 @@ export default function Sms({ receiveSms, totalReceiveSms, smsReq, totalSmsReq, 
                 <div className="bg-white p-8 grid grid-cols-3 gap-4">
                     <div className="shadow p-4 space-y-2">
                         <p className="text-sm font-medium">Receive SMS</p>
-                        <span className="font-block text-2xl flex justify-center">{new BigNumber(totalReceiveSms).toFormat(0)}</span>
+                        <span className="font-block text-2xl flex justify-center">{totalReceiveSms ? new BigNumber(totalReceiveSms).toFormat(0) : '--'}</span>
                     </div>
                     <div className="shadow p-4 space-y-2">
                         <p className="text-sm font-medium">SMS Request</p>
-                        <span className="font-block text-2xl flex justify-center">{new BigNumber(totalSmsReq).toFormat(0)}</span>
+                        <span className="font-block text-2xl flex justify-center">{totalSmsReq ? new BigNumber(totalSmsReq).toFormat(0) : '--'}</span>
                     </div>
                     <div className="shadow p-4 space-y-2">
                         <p className="text-sm font-medium">SMS Response</p>
-                        <span className="font-block text-2xl flex justify-center">{new BigNumber(totalSmsRes).toFormat(0)}</span>
+                        <span className="font-block text-2xl flex justify-center">{totalSmsRes ? new BigNumber(totalSmsRes).toFormat(0) : '--'}</span>
                     </div>
                 </div>
                <section>

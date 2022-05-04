@@ -86,7 +86,7 @@ export default function SmsRequestTable({ title, data }) {
                                 ))}
                             </TableBody>
                         </Table>
-                        {sortedData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).length == 0 && <p className="text-center py-4 text-sm font-medium">Хайлт олдсонгүй</p>}
+                        {sortedData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).length == 0 && <p className="flex justify-center py-4 text-sm font-medium">Хайлт олдсонгүй</p>}
                     </TableContainer>
                     <TablePagination rowsPerPageOptions={[5,10,20]} component="div" count={sortedData.length} page={page} rowsPerPage={rowsPerPage} onPageChange={handleChangePage} onRowsPerPageChange={handleChangeRowsPerPage} />
                 </div>
