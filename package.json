@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "NODE_ENV=production next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -18,7 +18,8 @@
     "react": "17.0.0",
     "react-chartjs-2": "^4.1.0",
     "react-dom": "17.0.0",
-    "react-icons": "^4.3.1"
+    "react-icons": "^4.3.1",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.7",
