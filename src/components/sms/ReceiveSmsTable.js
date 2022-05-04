@@ -73,7 +73,7 @@ export default function ReceiveSmsTable({ title, data }) {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {sortedData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((item) => (
+                                {sortedData && sortedData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((item) => (
                                     <TableRow key={item.id}>
                                         <TableCell>{item.id}</TableCell>
                                         <TableCell>{item.username}</TableCell>
@@ -87,9 +87,9 @@ export default function ReceiveSmsTable({ title, data }) {
                                 ))}
                             </TableBody>
                         </Table>
-                        {sortedData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).length == 0 && <p className="py-4 text-sm font-medium flex justify-center">Хайлт олдсонгүй</p>}
+                        {sortedData && sortedData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).length == 0 && <p className="py-4 text-sm font-medium flex justify-center">Хайлт олдсонгүй</p>}
                     </TableContainer>
-                    <TablePagination rowsPerPageOptions={[5,10,20]} component="div" count={sortedData.length} page={page} rowsPerPage={rowsPerPage} onPageChange={handleChangePage} onRowsPerPageChange={handleChangeRowsPerPage} />
+                    <TablePagination rowsPerPageOptions={[5,10,20]} component="div" count={sortedData ? sortedData.length : '0'} page={page} rowsPerPage={rowsPerPage} onPageChange={handleChangePage} onRowsPerPageChange={handleChangeRowsPerPage} />
                 </div>
             </div>
             <Popover
