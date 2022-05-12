@@ -136,41 +136,41 @@ export default function Withdraw({ withdrawReq, totalWithdrawReq, withdrawRes, t
 }
 
 export async function getServerSideProps() {
-    let fetchWithdrawReq = await axios.get(`${process.env.API_URL}/withdraw-req?limit=100`)
-    let withdrawReq = await fetchWithdrawReq.data
-  
     let fetchTotalWithdrawReq = await axios.get(`${process.env.API_URL}/total-withdraw-req`)
     let totalWithdrawReq = await fetchTotalWithdrawReq.data
-  
-    let fetchWithdrawRes = await axios.get(`${process.env.API_URL}/withdraw-res?limit=100`)
-    let withdrawRes = await fetchWithdrawRes.data
+
+    let fetchWithdrawReq = await axios.get(`${process.env.API_URL}/withdraw-req?limit=${totalWithdrawReq}`)
+    let withdrawReq = await fetchWithdrawReq.data
   
     let fetchTotalWithdrawRes = await axios.get(`${process.env.API_URL}/total-withdraw-res`)
     let totalWithdrawRes = await fetchTotalWithdrawRes.data
-  
-    let fetchRefundReq = await axios.get(`${process.env.API_URL}/refund-req?limit=100`)
-    let refundReq = await fetchRefundReq.data
+
+    let fetchWithdrawRes = await axios.get(`${process.env.API_URL}/withdraw-res?limit=${totalWithdrawRes}`)
+    let withdrawRes = await fetchWithdrawRes.data
   
     let fetchTotalRefundReq = await axios.get(`${process.env.API_URL}/total-refund-req`)
     let totalRefundReq = await fetchTotalRefundReq.data
-  
-    let fetchRefundRes = await axios.get(`${process.env.API_URL}/refund-res?limit=100`)
-    let refundRes = await fetchRefundRes.data
+
+    let fetchRefundReq = await axios.get(`${process.env.API_URL}/refund-req?limit=${totalRefundReq}`)
+    let refundReq = await fetchRefundReq.data
   
     let fetchTotalRefundRes = await axios.get(`${process.env.API_URL}/total-refund-res`)
     let totalRefundRes = await fetchTotalRefundRes.data
-  
-    let fetchBankReq = await axios.get(`${process.env.API_URL}/bank-req?limit=100`)
-    let bankReq = await fetchBankReq.data
+
+    let fetchRefundRes = await axios.get(`${process.env.API_URL}/refund-res?limit=${totalRefundRes}`)
+    let refundRes = await fetchRefundRes.data
   
     let fetchTotalBankReq = await axios.get(`${process.env.API_URL}/total-bank-req`)
     let totalBankReq = await fetchTotalBankReq.data
-  
-    let fetchBankRes = await axios.get(`${process.env.API_URL}/bank-res?limit=100`)
-    let bankRes = await fetchBankRes.data
+
+    let fetchBankReq = await axios.get(`${process.env.API_URL}/bank-req?limit=${totalBankReq}`)
+    let bankReq = await fetchBankReq.data
   
     let fetchTotalBankRes = await axios.get(`${process.env.API_URL}/total-bank-res`)
     let totalBankRes = await fetchTotalBankRes.data
+
+    let fetchBankRes = await axios.get(`${process.env.API_URL}/bank-res?limit=${totalBankRes}`)
+    let bankRes = await fetchBankRes.data
     
     return {
         props: {

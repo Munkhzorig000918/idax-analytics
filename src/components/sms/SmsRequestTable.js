@@ -65,15 +65,15 @@ export default function SmsRequestTable({ title, data }) {
                     </div>
                 </div>
                 <div>
-                    <TableContainer component={Paper}>
-                        <Table aria-label="simple table">
+                    <TableContainer component={Paper} style={{ maxHeight: "40rem" }}>
+                        <Table aria-label="simple table" stickyHeader>
                             <TableHead>
                                 <TableRow>
                                     {searchFields.map(item => <TableCell key={item}>{item}</TableCell>)}
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {sortedData && sortedData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((item) => (
+                                {sortedData && sortedData.map((item) => (
                                     <TableRow key={item.id}>
                                         <TableCell>{item.id}</TableCell>
                                         <TableCell>{item.username}</TableCell>
@@ -88,7 +88,7 @@ export default function SmsRequestTable({ title, data }) {
                         </Table>
                         {sortedData && sortedData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).length == 0 && <p className="flex justify-center py-4 text-sm font-medium">Хайлт олдсонгүй</p>}
                     </TableContainer>
-                    <TablePagination rowsPerPageOptions={[5,10,20]} component="div" count={sortedData ? sortedData.length : '0'} page={page} rowsPerPage={rowsPerPage} onPageChange={handleChangePage} onRowsPerPageChange={handleChangeRowsPerPage} />
+                    {/* <TablePagination rowsPerPageOptions={[5,10,20]} component="div" count={sortedData ? sortedData.length : '0'} page={page} rowsPerPage={rowsPerPage} onPageChange={handleChangePage} onRowsPerPageChange={handleChangeRowsPerPage} /> */}
                 </div>
             </div>
             <Popover

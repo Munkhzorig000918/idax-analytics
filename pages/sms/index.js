@@ -48,23 +48,23 @@ export default function Sms({ receiveSms, totalReceiveSms, smsReq, totalSmsReq, 
 }
 
 export async function getServerSideProps(ctx) {
-    let fetchReceiveSms = await axios.get(`${process.env.API_URL}/receive-sms?limit=100`)
-    let receiveSms = await fetchReceiveSms.data
-
     let fetchTotalReceiveSms = await axios.get(`${process.env.API_URL}/total-receive-sms`)
     let totalReceiveSms = await fetchTotalReceiveSms.data
 
-    let fetchSmsReq = await axios.get(`${process.env.API_URL}/sms-req?limit=100`)
-    let smsReq = await fetchSmsReq.data
+    let fetchReceiveSms = await axios.get(`${process.env.API_URL}/receive-sms?limit=${totalReceiveSms}`)
+    let receiveSms = await fetchReceiveSms.data
 
     let fetchTotalSmsReq = await axios.get(`${process.env.API_URL}/total-sms-req`)
     let totalSmsReq = await fetchTotalSmsReq.data
 
-    let fetchSmsRes = await axios.get(`${process.env.API_URL}/sms-res?limit=100`)
-    let smsRes = await fetchSmsRes.data
+    let fetchSmsReq = await axios.get(`${process.env.API_URL}/sms-req?limit=${totalSmsReq}`)
+    let smsReq = await fetchSmsReq.data
 
     let fetchTotalSmsRes = await axios.get(`${process.env.API_URL}/total-sms-res`)
     let totalSmsRes = await fetchTotalSmsRes.data
+    
+    let fetchSmsRes = await axios.get(`${process.env.API_URL}/sms-res?limit=${totalSmsRes}`)
+    let smsRes = await fetchSmsRes.data
   
     return {
         props: {

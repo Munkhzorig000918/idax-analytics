@@ -19,7 +19,9 @@ export default function WithdrawRequestTable({ title, data }) {
     const [page, setPage] = useState(0)
     const [rowsPerPage, setRowsPerPage] = useState(5)
 
-    const handleChangePage = (event, newPage) => setPage(newPage)
+    const handleChangePage = (event, newPage) => {
+        setPage(newPage)
+    }
 
     const handleChangeRowsPerPage = (event) => {
         setRowsPerPage(parseInt(event.target.value, 10));
@@ -66,15 +68,15 @@ export default function WithdrawRequestTable({ title, data }) {
                     </div>
                 </div>
                 <div>
-                    <TableContainer component={Paper}>
-                        <Table aria-label="simple table">
+                    <TableContainer component={Paper} style={{ maxHeight: "40rem" }}>
+                        <Table aria-label="simple table" stickyHeader>
                             <TableHead>
                                 <TableRow>
                                     {searchFields.map(item => <TableCell key={item}>{item}</TableCell>)}
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {sortedData && sortedData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((item) => (
+                                {sortedData && sortedData.map((item) => (
                                     <TableRow key={item.id}>
                                         <TableCell>{item.id}</TableCell>
                                         <TableCell>{item.userId}</TableCell>
@@ -92,7 +94,7 @@ export default function WithdrawRequestTable({ title, data }) {
                         </Table>
                         {sortedData && sortedData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).length == 0 && <p className="flex justify-center py-4 text-sm font-medium">Хайлт олдсонгүй</p>}
                     </TableContainer>
-                    <TablePagination rowsPerPageOptions={[5,10,20]} component="div" count={sortedData ? sortedData.length : '0'} page={page} rowsPerPage={rowsPerPage} onPageChange={handleChangePage} onRowsPerPageChange={handleChangeRowsPerPage} />
+                    {/* <TablePagination rowsPerPageOptions={[5,10,20]} component="div" count={sortedData ? sortedData.length : '0'} page={page} rowsPerPage={rowsPerPage} onPageChange={handleChangePage} onRowsPerPageChange={handleChangeRowsPerPage} /> */}
                 </div>
             </div>
             <Popover
